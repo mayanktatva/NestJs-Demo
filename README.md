@@ -21,9 +21,49 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+# Nestjs-crud-demo
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+A RESTful API built with NestJS featuring JWT-based authentication, user management, and product CRUD operations. This project serves as a clean and scalable starting point for full-stack applications with role-based access control (RBAC).
+
+## 🔧 Features
+
+- JWT authentication
+- Role-based access control (admin/user)
+- Guarded routes with `@Roles` and `RolesGuard`
+- User and product management (CRUD)
+- Request validation using `class-validator`
+
+## 🛠️ Tech Stack
+
+- **Framework**: [NestJS](https://nestjs.com/)
+- **ORM**: TypeORM
+- **Database**: MySQL
+- **Validation**: class-validator
+
+## 📂 Project Structure
+
+```
+src/
+├── common/
+├── config/
+├── constants/
+├── database/
+├── interfaces/
+├── modules/
+    ├── auth/
+    ├── products/
+    ├── users/
+        ├── dto/
+            ├── create-user.dto.ts
+            ├── update-user.dto.ts
+        ├── entities/
+            ├── user.entity.ts
+        ├── users.controller.ts
+        ├── users.module.ts
+        ├── users.service.ts
+├── app.module.ts
+└── main.ts
+```
 
 ## Project setup
 
@@ -57,42 +97,37 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Deployment
+## 🧪 API Endpoints
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+| Method | Endpoint         | Description               |
+|--------|------------------|---------------------------|
+| POST   | `/auth/register` | Register a new user       |
+| POST   | `/auth/login`    | Login and receive token   |
+| GET    | `/users`         | Get all users (admin only)|
+| CRUD   | `/products`      | Manage products (CRUD)    |
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+## 🔐 Roles
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+- **Admin**: Full access to all endpoints
+- **User**: Limited access based on roles
+
+## ⚙️ Environment Setup
+
+Create a `.env` file in the root directory with the following:
+
 ```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+JWT_SECRET=default-secret
+DB_HOST=localhost
+DB_PORT=3306
+DB_USERNAME=root
+DB_PASSWORD=root
+DB_NAME=nest_crud
+```
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Author - [Deep Akabari](https://x.com/DeepAkabari_17)
 
-## License
+## 📄 License
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+This project is licensed under the MIT License.
