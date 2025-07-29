@@ -33,7 +33,7 @@ export class ProductsService {
 
   async findOne(id: number) {
     const product = await this.productRepo.findOneBy({ id });
-    if(!product) {
+    if (!product) {
       throw new NotFoundException(messages.PRODUCT_NOT_FOUND);
     }
     return this.productRepo.findOne({ where: { id }, relations: ['user'] });
